@@ -1,5 +1,5 @@
 import numpy as np
-from simulation import Simulation
+from algo.simulation import Simulation
 
 memory = 8
 

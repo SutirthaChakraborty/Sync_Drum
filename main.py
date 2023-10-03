@@ -1,19 +1,19 @@
 import numpy as np
 import wave
 
-from kuramoto import Kuramoto
-from swarmalator import Swarmalator
-from janus import Janus
+from algo.kuramoto import Kuramoto
+from algo.swarmalator import Swarmalator
+from algo.janus import Janus
 # constants
 
 win_s = 1024
 hop_s = win_s // 2
 beat_vol = 0.00005
 
-beat_a = wave.open("./drum-a.wav")
-beat_b = wave.open("./drum-a.wav")
-beat_c = wave.open("./drum-b.wav")
-beat_d = wave.open("./drum-a.wav")
+beat_a = wave.open("extras/sounds/drum-a.wav")
+beat_b = wave.open("extras/sounds/drum-a.wav")
+beat_c = wave.open("extras/sounds/drum-b.wav")
+beat_d = wave.open("extras/sounds/drum-a.wav")
 
 beats = [beat_a, beat_b, beat_c, beat_d]
 beat_track = []
@@ -47,6 +47,6 @@ if __name__ == "__main__":
         attempt.set_out_mode(1)
         attempt.set_beat_track(beat_track)
 
-        attempt.run_live("a.wav", 12)
+        attempt.run_live("extras/sounds/a.wav", 12)
     pass
 
