@@ -21,7 +21,8 @@ Experience the next-level virtual drumming, powered by the elegance of complex s
 
 "Virtual Gesture-Based Drum Synchronizer" is an avant-garde application that merges the intricate world of complex system dynamics with the joy of rhythm. Unveil a real-time drumming sensation by merely swaying your hands. With algorithms like `Swarmlator`, `Janus`, and `Kuramoto` at its heart, your gestures evolve into mesmerizing beats.
 
-🗂️ Folder Structure
+```
+ 🗂️ Project Structure
 │
 ├── 📄 README.md
 │
@@ -44,6 +45,7 @@ Experience the next-level virtual drumming, powered by the elegance of complex s
 ├── 🚀 main.py
 │
 └── 🔧 requirements.txt
+```
 
 
 ---
