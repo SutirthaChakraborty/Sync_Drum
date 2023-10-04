@@ -1,11 +1,7 @@
 import numpy as np
 from algo.simulation import Simulation
 
-memory = 8
-win_s = 1024
-hop_s = win_s // 2
-samplerate = 44100
-beat_vol = 0.00005
+memory = 8 
 
 # class for fifth attempt
 class Kuramoto(Simulation):

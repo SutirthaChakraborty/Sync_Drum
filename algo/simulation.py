@@ -15,6 +15,7 @@ beat_vol = 0.0005
 sender_host = '127.0.0.1'
 sender_port = 4560
 sender_url = '/live_loop/foo'
+DEVICE_INDEX = 2
 
 click = beat_vol * np.sin(2. * np.pi * np.arange(hop_s) /
                           hop_s * samplerate / 3000.)
@@ -37,11 +38,11 @@ class Simulation:
 
         # in mode 0 is file
         # in mode 1 is live
-        self.in_mode = 0
+        self.in_mode = 1
 
         # out mode 0 is normal output
         # out mode 1 is sonic Pi bpm
-        self.out_mode = 0
+        self.out_mode = 1
 
     def set_in_mode(self, mode):
         self.in_mode = mode
@@ -107,7 +108,7 @@ class Simulation:
         elif self.in_mode == 1:
             self.in_stream = p.open(format=pyaudio.paFloat32,
                                     channels=1, rate=samplerate, input=True, output=True,
-                                    frames_per_buffer=hop_s)
+                                    frames_per_buffer=hop_s,input_device_index=2)   # select correct device index
 
         self.a_tempo = aubio.tempo("default", win_s, hop_s, samplerate)
         fig = plt.figure()
@@ -123,7 +124,7 @@ class Simulation:
 
         stream.start_stream()
         ani = animation.FuncAnimation(
-            fig, self.live_graph, interval=graph_update_interval)
+            fig, self.live_graph, interval=graph_update_interval, save_count=100)
         plt.show()
 
         while stream.is_active():
@@ -139,7 +140,7 @@ class Simulation:
             is_beat = self.a_tempo(samples)
 
         elif self.in_mode == 1:
-            in_data = self.in_stream.read(hop_s)
+            in_data = self.in_stream.read(hop_s, exception_on_overflow=False)
             samples = np.array(np.frombuffer(in_data, dtype=aubio.float_type))
             read = hop_s
             is_beat = self.a_tempo(samples)

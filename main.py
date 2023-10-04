@@ -43,8 +43,8 @@ if __name__ == "__main__":
         Kuramoto(init),
         # Janus(init),
     ]:
-        attempt.set_in_mode(0)
-        attempt.set_out_mode(1)
+        attempt.set_in_mode(1)  # 0 means input will be audio file, 1 means intput will be microphone
+        attempt.set_out_mode(0) # 0 means output will be  wav samples, 1 means sonic pi
         attempt.set_beat_track(beat_track)
 
         attempt.run_live("extras/sounds/a.wav", 12)
